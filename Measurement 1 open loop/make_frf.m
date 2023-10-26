@@ -1,12 +1,15 @@
-nfft = 10000; % average across 60 frames with 50% overlap
-figure
-hold on
+load('measurements/load side v=0.5/measurement_2.mat')
+
+nfft = 10000; 
+
+[FRF, F] = tfestimate(result(:,1), result(:,2), hann(nfft), 0.5*nfft, nfft, 4000);
+FRF = -FRF;
 subplot(3,1,1);
-[TF,F]=tfestimate(measurement(:,1), measurement(:,2), hann(nfft), 0.5*nfft, nfft, 1/Ts);
-semilogx(F, 20*log10(abs(TF)));
+semilogx(F, 20*log(abs(FRF))); grid on;
+
 subplot(3,1,2);
-semilogx(F, rad2deg(angle(TF)));
+semilogx(F, rad2deg(angle(FRF)))
 
 subplot(3,1,3);
-[Coherence,F] = mscohere(measurement(:,1), measurement(:,2), hann(nfft), 0.5*nfft, nfft, 1/Ts);%Ts = 2.5*10^-4
-semilogx(F, Coherence);
+[Coherence, F] = mscohere(result(:,1), result(:,2), hann(nfft), 0.5*nfft, nfft, 4000);
+semilogx(F, Coherence)
