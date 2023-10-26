@@ -1,4 +1,4 @@
-load('measurements/load side v=0.5/measurement_2.mat')
+load('Measurement 1 open loop/measurements_setup29/load_side_v_0.5.mat')
 
 nfft = 10000; 
 
