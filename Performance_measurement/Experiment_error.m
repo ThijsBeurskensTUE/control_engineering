@@ -56,7 +56,7 @@ r = measurement(:,1);
 % Error
 e = measurement(:,2);
 % Output
-y = measurement(:,3);
+y = r-e;
 
 % Plot the measurement
 figure(1); clf(1);
