@@ -1,3 +1,4 @@
 
 nfft = 10000;
-APSD = cpsd(, , hann(nfft), 0.5*nfft, nfft, 1/0.001);
+[PSD, F] = cpsd(e, e, hann(nfft), 0.5*nfft, nfft, 4000);
+semilogx(F,PSD)
