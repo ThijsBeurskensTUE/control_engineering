@@ -8,11 +8,11 @@
 % SPERTE is licensed under the GNU GPLv3
 
 % How many samples to measure?
-N_samples = 60e3; % at 4khz, that allows for 15s of data (12s performance region plus some buffer)
+N_samples = 500e3; % at 4khz, that allows for 15s of data (12s performance region plus some buffer)
 
 % Model should be Reference_model_Control_Engineering or change it if you renamed the
 % model
-ModelName = 'Reference_model_Control_Engineering';
+ModelName = 'Reference_model_Control_Engineering_Feedforward';
 % Check if the model is running, makes no sense to measure otherwise.
 if ~strcmp(get_param(ModelName,'SimulationStatus'),'external')
    warning('The model is not running, can not perform a measurement.');
@@ -43,11 +43,11 @@ pause(0.1);
 
 
 % Start turning on the reference
-set_param(BlockPaths{Ref_switch},'Switch','On');
-pause(0.1);
+%set_param(BlockPaths{Ref_switch},'Switch','On');
+%pause(0.1);
 
 % Turn off the noise
-set_param(BlockPaths{Ref_switch},'Switch','Off')
+%set_param(BlockPaths{Ref_switch},'Switch','Off')
 
 % Make sure the two signals being logged into the Measurement Block 
 % are r, e and y
@@ -56,7 +56,7 @@ r = measurement(:,1);
 % Error
 e = measurement(:,2);
 % Output
-y = measurement(:,3);
+y = r-e;
 
 % Plot the measurement
 figure(1); clf(1);
@@ -71,8 +71,8 @@ r = r(y>0);
 y = y(y>0);
 
 [rmax, idx_middle] = max(r);
-rforward = r(:idx_middle);
-rbackward = r(idx_middle:);
+rforward = r(1:idx_middle);
+rbackward = r(idx_middle:end);
 
 forward_range = find(rforward>=2.5 & rforward<=122.5); % constant velocity range
 forward_RMS = sqrt(1/length(forward_range) * sum(e(forward_range).^2))
