@@ -21,7 +21,7 @@ amax = 200;
 amin = 1;
 plt = 1;    % If you don't want to plot the profile, set this to 0
 
-SAVE_NAME = 'Session_02_Nov/References/Ref_region_2.mat';
+SAVE_NAME = 'Session_02_Nov/References/Ref_region_3.mat';
 
 %% Reference generation. Do not change unless you know what you're doing
 
