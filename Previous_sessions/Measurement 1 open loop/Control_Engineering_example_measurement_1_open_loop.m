@@ -12,7 +12,7 @@ N_samples = 500e3;
 
 % Model should be Reference_model_Control_Engineering or change it if you renamed the
 % model
-ModelName = 'Reference_model_Control_Engineering_measurement_open_loop';
+ModelName = 'open_loop';
 % Check if the model is running, makes no sense to measure otherwise.
 if ~strcmp(get_param(ModelName,'SimulationStatus'),'external')
    warning('The model is not running, can not perform a measurement.');
