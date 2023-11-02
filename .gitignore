@@ -2,6 +2,7 @@
 **.slxc
 **.asv
 **.autosave
+**.DS_Store
 **/*_ert_rtw/**
 **/slprj/**
 **/r3gbak.mat
