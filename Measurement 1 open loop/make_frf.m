@@ -10,5 +10,5 @@ subplot(3,1,2);
 semilogx(F, rad2deg(angle(FRF)))
 
 subplot(3,1,3);
-[Coherence, F] = mscohere(result(:,1), result(:,2), hann(nfft), 0.5*nfft, nfft, 4000);
+[Coherence, F] = mscohere(measurement(:,1), measurement(:,2), hann(nfft), 0.5*nfft, nfft, 4000);
 semilogx(F, Coherence)
