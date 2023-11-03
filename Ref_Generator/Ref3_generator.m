@@ -17,11 +17,11 @@ v_stroke = 121;
 total_t = 4.99;
 p_total = 125;
 vmax = 300;
-amax = 200;
+amax = 500;
 amin = 1;
 plt = 1;    % If you don't want to plot the profile, set this to 0
 
-SAVE_NAME = 'Session_02_Nov/References/Ref_region_1_v2.mat';
+SAVE_NAME = 'Session_02_Nov/References/Ref_region_1_v3.mat';
 
 %% Reference generation. Do not change unless you know what you're doing
 

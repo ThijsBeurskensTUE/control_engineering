@@ -5,10 +5,13 @@
 % load('Session_02_Nov/Performance_measurements/Region_1/reduced_gain_to_0.06.mat')
 % error = (error=2.5 & rforward<=error);
 % prev_error=error;
-load('Session_02_Nov/Performance_measurements/Region_1/added_notch_at_3.46.mat')
+% load('Session_02_Nov/Performance_measurements/Region_1/added_notch_at_3.46.mat')
+% error = error(reference>=2.5 & reference<=122.5);
+% prev_error=error;
+load('Session_02_Nov/Performance_measurements/Region_1/added_integrator.mat')
 % error = error(reference>=2.5 & reference<=122.5);
 prev_error=error;
-load('Session_02_Nov/Performance_measurements/Region_1/added_integrator.mat')
+load('Session_02_Nov/Performance_measurements/Region_1/longer_constant_velocity.mat')
 % error = error(reference>=2.5 & reference<=122.5);
 new_error=error;
 

@@ -13,11 +13,12 @@
 % load('Session_02_Nov/Performance_measurements/Region_1/reduced_gain_to_0.06.mat')
 % load('Session_02_Nov/Performance_measurements/Region_1/added_notch_at_3.46.mat')
 % load('Session_02_Nov/Performance_measurements/Region_1/added_integrator.mat')
-load('Session_02_Nov/Performance_measurements/Region_1/reverted_feedforward.mat')
+% load('Session_02_Nov/Performance_measurements/Region_1/reverted_feedforward.mat')
+load('Session_02_Nov/Performance_measurements/Region_1/longer_constant_velocity.mat')
 
-period = 4;
+period = 0;
 % Cut reference to single period: 11.973
-start = period*4000*11.973;
+start = 1+period*4000*11.973;
 cut_point = (period+1)* 4000*11.973; % sampling frequency*time
 
 e = error(start:cut_point);
@@ -30,7 +31,7 @@ r = reference(start:cut_point);
 rforward = r(1:idx_middle);
 rbackward = r(idx_middle:end);
 
-forward_range = find(rforward>=2.5 & rforward<=122.5); % constant velocity range
+forward_range = find(rforward>2.5 & rforward<122.5); % constant velocity range
 forward_RMS = rms(e(forward_range));
 forward_peak = max(abs(e(forward_range)));
 
