@@ -1,11 +1,13 @@
-load('Session_02_Nov/Performance_measurements/Region_1/initial_feedback_without_feedforward.mat')
-error_no_feedforward=error;
+% load('Session_02_Nov/Performance_measurements/Region_1/initial_feedback_without_feedforward.mat')
+% error_no_feedforward=error;
 load('Session_02_Nov/Performance_measurements/Region_1/initial_feedback_with_feedforward.mat')
 error_feedforward=error;
+load('Session_02_Nov/Performance_measurements/Region_1/reduced_gain_to_0.06.mat')
+new_error=error;
 
 nfft = 10000; 
 
-cell = {error_no_feedback, error_feedforward};
+cell = {error_feedforward, new_error};
 
 figure;
 for i=[1,2]
