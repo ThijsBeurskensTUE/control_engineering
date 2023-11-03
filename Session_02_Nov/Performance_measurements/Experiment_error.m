@@ -10,13 +10,18 @@
 %% Calculate errors
 
 % load error and reference terms
-load('Session_02_Nov/Performance_measurements/Region_1/reduced_gain_to_0.06.mat')
+% load('Session_02_Nov/Performance_measurements/Region_1/reduced_gain_to_0.06.mat')
+% load('Session_02_Nov/Performance_measurements/Region_1/added_notch_at_3.46.mat')
+% load('Session_02_Nov/Performance_measurements/Region_1/added_integrator.mat')
+load('Session_02_Nov/Performance_measurements/Region_1/reverted_feedforward.mat')
 
+period = 4;
 % Cut reference to single period: 11.973
-cut_point = 4000*11.973; % sampling frequency*time
+start = period*4000*11.973;
+cut_point = (period+1)* 4000*11.973; % sampling frequency*time
 
-e = error(1:cut_point);
-r = reference(1:cut_point);
+e = error(start:cut_point);
+r = reference(start:cut_point);
 
 
 % cut signal to one period
@@ -37,6 +42,6 @@ backward_peak = max(abs(e(backward_range)));
 RMS_error = 0.5*(forward_RMS+backward_RMS)*1000
 Peak_error = max(forward_peak, backward_peak)*1000
 
-
+plot([e(forward_range)', e(backward_range)'])
 
 
