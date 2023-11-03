@@ -14,7 +14,9 @@
 % load('Session_02_Nov/Performance_measurements/Region_1/added_notch_at_3.46.mat')
 % load('Session_02_Nov/Performance_measurements/Region_1/added_integrator.mat')
 % load('Session_02_Nov/Performance_measurements/Region_1/reverted_feedforward.mat')
-load('Session_02_Nov/Performance_measurements/Region_1/longer_constant_velocity.mat')
+load('Session_02_Nov/Performance_measurements/Region_1/ref_v3_saviour_of_us_all.mat')
+% load('Session_02_Nov/Performance_measurements/Region_1/ref_v3_take_2.mat')
+
 
 period = 0;
 % Cut reference to single period: 11.973
