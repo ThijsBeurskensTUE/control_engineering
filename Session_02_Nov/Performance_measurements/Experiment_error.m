@@ -9,24 +9,34 @@
 
 %% Calculate errors
 
-% cut away parts where the reference is 0:
-e = e(y>0);
-r = r(y>0);
-y = y(y>0);
+% load error and reference terms
+load('Session_02_Nov/Performance_measurements/Region_1/reduced_gain_to_0.06.mat')
+
+% Cut reference to single period: 11.973
+cut_point = 4000*11.973; % sampling frequency*time
+
+e = error(1:cut_point);
+r = reference(1:cut_point);
+
+
+% cut signal to one period
 
 [rmax, idx_middle] = max(r);
 rforward = r(1:idx_middle);
 rbackward = r(idx_middle:end);
 
 forward_range = find(rforward>=2.5 & rforward<=122.5); % constant velocity range
-forward_RMS = sqrt(1/length(forward_range) * sum(e(forward_range).^2))
-forward_peak = max(abs(e(forward_range)))
+forward_RMS = rms(e(forward_range));
+forward_peak = max(abs(e(forward_range)));
 
-backward_range = find(rbackward<=125 & r>=2.5); % constant velocity range
-backward_RMS = sqrt(1/length(backward_range) * sum(e(backward_range).^2))
-backward_peak = max(abs(e(backward_range)))
+backward_range = find(rbackward>=2.5 & rbackward<=122.5); % constant velocity range
+backward_RMS = rms(e(backward_range));
+backward_peak = max(abs(e(backward_range)));
 
-Duration = length(y)/4000 % 0 to 0
+% display final values in mrad
+RMS_error = 0.5*(forward_RMS+backward_RMS)*1000
+Peak_error = max(forward_peak, backward_peak)*1000
+
 
 
 
