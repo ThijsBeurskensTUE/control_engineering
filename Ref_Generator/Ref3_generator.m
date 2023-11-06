@@ -13,11 +13,11 @@
 clear;
 
 % Set your parameters here
-v_stroke = 120;
-total_t = 4.99;
+v_stroke = 121;
+total_t = 5;
 p_total = 125;
 vmax = 300;
-amax = 200;
+amax = 1000;
 amin = 1;
 plt = 1;    % If you don't want to plot the profile, set this to 0
 
