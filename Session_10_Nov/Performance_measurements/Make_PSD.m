@@ -14,13 +14,14 @@ legend_text = ["Initial controller", "Feedforward action", "Gain reduced"];
 % error3 = error(reference>=2.5 & reference<=122.5);
 % legend_text = ["Notch filter at 3.46Hz", "Integrator action", "Change in reference"];
 
-
+load('Session_10_Nov/Performance_measurements/Region_1/K_fc_0.0066_0.0064_and_K_fa_0.000269_0.000276_.mat')
+error1=error;
 nfft = 10000; 
 
 cell = {error1, error2, error3};
 
 figure;
-for i=[1,2]
+for i=[1]
     error = cell{i};
     [PSD, F] = cpsd(error, error, hann(nfft), 0.5*nfft, nfft, 4000);
     subplot(3,1,1);
