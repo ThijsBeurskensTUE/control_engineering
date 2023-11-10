@@ -1,5 +1,5 @@
 
-load('FRF measurements/measurement_0.mat')
+load('FRF measurements/measurement_1.mat')
 
 nfft = 10000; 
 
