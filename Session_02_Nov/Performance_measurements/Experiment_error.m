@@ -14,7 +14,7 @@
 % load('Session_02_Nov/Performance_measurements/Region_1/added_notch_at_3.46.mat')
 % load('Session_02_Nov/Performance_measurements/Region_1/added_integrator.mat')
 % load('Session_02_Nov/Performance_measurements/Region_1/reverted_feedforward.mat')
-load('Session_02_Nov/Performance_measurements/Region_1/ref_v3_saviour_of_us_all.mat')
+% load('Session_02_Nov/Performance_measurements/Region_1/ref_v3_saviour_of_us_all.mat')
 % load('Session_02_Nov/Performance_measurements/Region_1/ref_v3_take_2.mat')
 
 
@@ -45,6 +45,17 @@ backward_peak = max(abs(e(backward_range)));
 RMS_error = 0.5*(forward_RMS+backward_RMS)*1000
 Peak_error = max(forward_peak, backward_peak)*1000
 
-plot([e(forward_range)', e(backward_range)'])
+
+fs=4000;
+Time = 0:1/fs:(length(e)-1)/fs;
+
+maxerror = zeros(1,length(e));
+maxerror(r>=2.5 & r<=122.5) = 12e-3;
+neg_maxerror = -maxerror;
+
+plot(Time, e); hold on; grid on;
+plot(Time, maxerror);
+plot(Time, neg_maxerror);
+
 
 
